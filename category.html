@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            background-image: url('images/categoryBg.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .top-icon{
+            display: flex;
+            flex-direction: row;
+            margin: 1rem;
+            width: 100%;
+        }
+
+        .top-icon img{
+            cursor: pointer;
+        }
+
+        .top-icon .backIcon{
+            width: 5rem;
+            margin-right: 1rem;
+            margin-left: 0.5rem;
+        }
+
+        .top-icon .soundIcon{
+            width: 4.5rem;
+            height: 4.9rem;
+        }
+
+        .text1 {
+            text-align: center;
+        }
+          
+        .text1 h2 {
+            font-size: 4rem;
+            color: #e67171;
+            font-family: 'Titan One', cursive;
+            text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+            margin-top: 0;
+            margin-bottom: 2rem;
+        }
+
+        .select,.selectText{
+            display: flex;
+            flex-direction: row;
+            width: 80%;
+            justify-content: space-between;
+        }
+
+        .select .cat1{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 30%;
+            height: 20rem;
+            cursor: pointer;
+            background-image: url(images/familyCat.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 1rem;
+            border: 0.5rem solid #e67171 ;
+        }
+
+
+        .select .cat2{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 30%;
+            cursor: pointer;
+            background-image: url(images/animalCat.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 1rem;
+            border: 0.5rem solid #e67171 ;
+            filter: grayscale();
+        }
+
+        .select .cat3{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 30%;
+            cursor: pointer;
+            background-image: url(images/bodyCat.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 1rem;
+            border: 0.5rem solid #e67171 ;
+            filter: grayscale();
+
+        }
+
+        .content{
+            font-size: 5rem;
+            padding: 1rem 2rem;
+            border-radius: 50%;
+            background-color: #3390d3;
+            border: none;
+            text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+            display:none;
+            cursor: pointer;
+        }
+
+        .content.show {
+            display: block;
+        } 
+
+        .cat1Text,.cat2Text,.cat3Text{
+            margin-top: 2rem;
+            padding: 0.2rem;
+            width: 30%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color:#fff ;
+            background-color: #e67171;
+            border-radius: 0.5rem;
+            border: 0.2rem solid #fff;
+            font-family: 'Bagel Fat One', cursive;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            letter-spacing: 0.2rem;
+        }
+
+        .cat1Text:hover,.cat2Text:hover,.cat3Text:hover{
+            transform: translateY(-0.8rem);
+            transition: 0.5s;
+        }
+
+    </style>
+</head>
+<body>
+    <audio id="background-music" autoplay loop>
+        <source src="/audio/Happy-Days.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    
+
+    <div class="top-icon">
+        <img class="backIcon" src="/images/icon/back.png" id="backButton">
+        <img class="soundIcon" src="/images/icon/soundOn.png" id="audio-control" alt="Play" onclick="toggleAudio()">
+    </div>
+
+    <div class="text1">
+        <h2>SELECT YOUR CATEGORY</h2>
+    </div>
+    <div class="select">
+        <div class="cat1" onmouseenter="showButton('.cat1')" onmouseleave="hideButton('.cat1')">
+            <button class="content" data-url="category/familyPage.html" onclick="navigateToPage(this)">
+                <i class="fa-solid fa-play fa-fade" style="color: #ffc644;"></i>
+            </button>
+        </div>
+        <div class="cat2" onmouseenter="showButton('.cat2')" onmouseleave="hideButton('.cat2')" >
+            <button class="content" data-url="category/animalPage.html" onclick="navigateToPage(this)" disabled>
+                <i class="fa-solid fa-lock fa-fade" style="color: #ffc644;"></i>
+            </button>
+        </div>
+        <div class="cat3" onmouseenter="showButton('.cat3')" onmouseleave="hideButton('.cat3')">
+            <button class="content" data-url="category/bodyPage.html" onclick="navigateToPage(this)" disabled>
+                <i class="fa-solid fa-lock fa-fade" style="color: #ffc644;"></i>
+            </button>
+        </div>
+    </div>
+    <div class="selectText">
+        <div class="cat1Text">family member</div>
+        <div class="cat2Text">Animal</div>
+        <div class="cat3Text">Body Part</div>
+    </div>
+
+
+    <script>
+        function navigateToPage(button) {
+            var pageUrl = button.getAttribute('data-url');
+            window.location.href = pageUrl;
+        }
+          
+        function showButton(selector) {
+            var childDiv = document.querySelector(selector + ' .content');
+            childDiv.style.display = 'block';
+        }
+          
+        function hideButton(selector) {
+            var childDiv = document.querySelector(selector + ' .content');
+            childDiv.style.display = 'none';
+        }    
+          
+        var audio = document.getElementById("background-music");
+        var audioControl = document.getElementById("audio-control");
+        const clickSound = document.getElementById("clickSound");
+
+        function toggleAudio() {
+        if (audio.paused) {
+            audio.play();
+            audioControl.src = "/images/icon/soundOn.png"; // Mengganti gambar dengan ikon pause
+        } else {
+            audio.pause();
+            audioControl.src = "/images/icon/soundMute.png"; // Mengganti gambar dengan ikon play
+        }
+        }
+
+        const backButton = document.getElementById("backButton");
+  
+        backButton.addEventListener("click", function() {
+            history.back();
+            clickSound.play();
+        });
+    </script>
+    
+
+</body>
+</html>

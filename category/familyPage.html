@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url('/images/familyBg.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .top-icon{
+            display: flex;
+            flex-direction: row;
+            margin: 1rem;
+            width: 100%;
+        }
+
+        .top-icon img{
+            cursor: pointer;
+        }
+
+        .top-icon .backIcon{
+            width: 5rem;
+            margin-right: 1rem;
+            margin-left: 0.5rem;
+        }
+
+        .top-icon .soundIcon{
+            width: 4.5rem;
+            height: 4.9rem;
+        }
+
+        .top-icon .menuIcon{
+            margin-right: 1rem ;
+            height: 4rem;
+            margin-left: auto;
+            width: 4rem;
+        }
+
+        .char .boy{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 16rem;
+            margin: 0 3rem;
+        }
+
+        .textBox{
+            display: block;
+            width: 50%;
+            height: 20%;
+            border-radius: 1rem;
+            margin-top: auto;
+            border: 0.5rem solid rgb(208, 50, 50);
+            background-color:blanchedalmond ;
+            animation: slide-in 1.5s ease-in-out forwards; 
+            margin-bottom: 1rem;
+        }
+
+        @keyframes slide-in {
+            from {
+              opacity: 0;
+              transform: translateY(100%);
+            }
+            to {
+              opacity: 1; 
+              transform: translateY(0); 
+            }
+          }
+
+        .textBox p{
+            padding: 1rem;
+        }
+
+        .bot-icon{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            cursor: pointer;
+        }
+
+        .bot-icon img{
+            width: 10rem;
+            margin: 2rem;
+        }
+
+        
+
+    </style>
+</head>
+<body>
+    <audio  id="background-music"" autoplay loop>
+        <source src="/audio/Garden.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>      
+    <div class="top-icon">
+        <img class="backIcon" src="/images/icon/back.png" id="backButton">
+        <img class="soundIcon" src="/images/icon/soundOn.png" title="On/Off Music" id="audio-control" alt="Play" onclick="toggleAudio()">
+        <img class="menuIcon" src="/images/icon/menu.png" alt="">
+    </div>
+    <div class="char">
+        <img class="boy" src="/images/char/boy.png" alt="">
+    </div>
+    <div class="bot-icon">
+        <a href="content.html"><img src="/images/icon/next.png" alt=""></a>
+        
+    </div>
+    <div class="textBox">
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias repudiandae aliquam praesentium dicta iste modi esse voluptas facere odit saepe? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto maxime itaque commodi exercitationem repellat magni, porro ex. Quo, asperiores laborum nostrum facere saepe, atque impedit deleniti voluptatum, officia explicabo in?</p>
+    </div>
+
+    <script>
+        var audio = document.getElementById("background-music");
+        var audioControl = document.getElementById("audio-control");
+
+        function toggleAudio() {
+            if (audio.paused) {
+                audio.play();
+                audioControl.src = "/images/icon/soundOn.png"; 
+            } else {
+                audio.pause();
+                audioControl.src = "/images/icon/soundMute.png"; 
+            }
+        }
+
+        const backButton = document.getElementById("backButton");
+  
+        backButton.addEventListener("click", function() {
+            history.back();
+        });
+    </script>
+</body>
+</html>
