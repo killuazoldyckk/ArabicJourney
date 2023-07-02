@@ -154,14 +154,14 @@
 </head>
 <body>
     <audio id="background-music" autoplay loop>
-        <source src="/audio/Happy-Days.mp3" type="audio/mp3">
+        <source src="audio/Happy-Days.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
     
 
     <div class="top-icon">
-        <img class="backIcon" src="/images/icon/back.png" id="backButton">
-        <img class="soundIcon" src="/images/icon/soundOn.png" id="audio-control" alt="Play" onclick="toggleAudio()">
+        <img class="backIcon" src="images/icon/back.png" id="backButton">
+        <img class="soundIcon" src="images/icon/soundOn.png" id="audio-control" alt="Play" onclick="toggleAudio()">
     </div>
 
     <div class="text1">
@@ -214,10 +214,10 @@
         function toggleAudio() {
         if (audio.paused) {
             audio.play();
-            audioControl.src = "/images/icon/soundOn.png"; // Mengganti gambar dengan ikon pause
+            audioControl.src = "images/icon/soundOn.png"; // Mengganti gambar dengan ikon pause
         } else {
             audio.pause();
-            audioControl.src = "/images/icon/soundMute.png"; // Mengganti gambar dengan ikon play
+            audioControl.src = "images/icon/soundMute.png"; // Mengganti gambar dengan ikon play
         }
         }
 

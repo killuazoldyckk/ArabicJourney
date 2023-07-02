@@ -1,23 +1,3 @@
-<?php
-// Menghubungkan ke database (ganti dengan kredensial database Anda)
-$servername = "localhost";
-$username = "username";
-$password = "password";
-$dbname = "family";
-
-// Membuat koneksi ke database
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Memeriksa koneksi
-if ($conn->connect_error) {
-    die("Koneksi ke database gagal: " . $conn->connect_error);
-}
-
-$sql = "SELECT id, name, sound, pronounce FROM familyMember";
-$result = $conn->query($sql);
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,15 +9,19 @@ $result = $conn->query($sql);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
     <style>
         *{
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            text-decoration: none;
+
         }
 
         body {
-            background-image: url('/images/familyBg.png');
+            background-image: url('../images/familyBg.png');
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -112,6 +96,10 @@ $result = $conn->query($sql);
             background-color: #ffc644;
         }
 
+        #playSoundBtn{
+            cursor: pointer;
+        }
+
 
         .bot-icon{
             position: absolute;
@@ -124,63 +112,119 @@ $result = $conn->query($sql);
             width: 10rem;
             margin: 2rem;
         }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+          }
+        
+          .modal-content {
+            background-image: url('../images/menuBg.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 15% auto;
+            padding: 1rem;
+            border-radius: 1rem;
+            border: 0.5rem solid #da6969;
+            width: 80%;
+            max-width: 500px;
+            position: relative;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+          }
+
+          .modal-content h1{
+            font-family: 'Luckiest Guy', cursive;
+            letter-spacing: 1rem;
+            color: white;
+            margin-top: -4rem;
+            margin-bottom: 2rem;
+          }
+
+          .modal-content h2{
+            font-family: 'Luckiest Guy', cursive;
+            color: #da6969;
+            padding-bottom: 2rem;
+          }
+
+          .modal-content p{
+            background-color: #da6969;
+            display: inline;
+            color: white;        
+            padding: 0.5rem;
+            border-radius: 1rem;
+            cursor: pointer;    
+          }
+
+          .modal-content p i{
+            margin-right: 0.9rem;
+          }
+
+          .modal-content p a{
+            color: white;
+          }
         
     </style>
 </head>
 <body>
-    <audio  id="background-music"" autoplay loop>
-        <source src="/audio/Garden.mp3" type="audio/mp3">
+    <audio  id="background-music" autoplay loop>
+        <source src="../audio/Garden.mp3" type="audio/mp3">
         Your browser does not support the audio element.
-    </audio>      
+    </audio>
+    <audio id="playSound">
+        <source id="audioSource" src="../audio/father_audio.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>  
     <div class="top-icon">
-        <img class="backIcon" src="/images/icon/back.png" id="backButton">
-        <img class="soundIcon" src="/images/icon/soundOn.png" title="On/Off Music" id="audio-control" alt="Play" onclick="toggleAudio()">
-        <img class="menuIcon" src="/images/icon/menu.png" alt="">
+        <img class="backIcon" src="../images/icon/back.png" id="backButton">
+        <img class="soundIcon" src="../images/icon/soundOn.png" title="On/Off Music" id="audio-control" alt="Play" onclick="toggleAudio()">
+        <img id="modal-trigger" class="menuIcon" src="../images/icon/menu.png" alt="">
     </div>
-    <div class="bot-icon">
-        <a href="content.html"><img src="/images/icon/next.png" alt=""></a>
+    <div class="bot-icon" id="nextIcon">
+        <img src="../images/icon/next.png" alt="">
     </div>
     <div class="content">
-        <img src="/images/family/father.png" alt="">
-        <p>
+        <img id="familyImage" src="../images/family/father.png" alt="">
+        <p id="playSoundBtn">
             <i class="fas fa-volume-up"></i>
             Play Sound
         </p>
-        <p class="arabic">
+        <p class="arabic" id="arabicName">
             أب
         </p>
-        <p class="pron">
+        <p class="pron" id="arabicPron">
             'Eb
         </p>
     </div>
 
-    <script>
-        function getNextData() {
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    var data = JSON.parse(xhr.responseText);
-                    showData(data);
-                } else {
-                    console.error('Terjadi kesalahan: ' + xhr.status);
-                }
-            }
-        };
-        xhr.open('GET', 'get_next_data.php', true);
-        xhr.send();
+    <div id="modal" class="modal">
+        <div class="modal-content">
+          <h1>PAUSE</h1>
+          <h2>Hello Buddies</h2>
+          <p><a href="../index.php"><i class="fa-solid fa-house fa-beat-fade"></i>Back To Homepage</a></p><br><br><br>
+          <p class="close"><i class="fa-solid fa-circle-pause fa-beat-fade"></i>Resume</p>
+        </div>
+      </div>
 
+    <script>
         var audio = document.getElementById("background-music");
         var audioControl = document.getElementById("audio-control");
-        const clickSound = document.getElementById("clickSound");
 
         function toggleAudio() {
         if (audio.paused) {
             audio.play();
-            audioControl.src = "/images/icon/soundOn.png"; // Mengganti gambar dengan ikon pause
+            audioControl.src = "../images/icon/soundOn.png"; // Mengganti gambar dengan ikon pause
         } else {
             audio.pause();
-            audioControl.src = "/images/icon/soundMute.png"; // Mengganti gambar dengan ikon play
+            audioControl.src = "../images/icon/soundMute.png"; // Mengganti gambar dengan ikon play
         }
         }
 
@@ -190,7 +234,74 @@ $result = $conn->query($sql);
             history.back();
             clickSound.play();
         });
-    }
+
+        var modal = document.getElementById("modal");
+        var modalTrigger = document.getElementById("modal-trigger");
+        var closeButton = document.getElementsByClassName("close")[0];
+
+        modalTrigger.onclick = function() {
+            audio.pause();
+            audioControl.src = "../images/icon/soundMute.png"; 
+            modal.style.display = "block";
+        };
+
+        closeButton.onclick = function() {
+            audio.play();
+            audioControl.src = "../images/icon/soundOn.png"; 
+            modal.style.display = "none";
+        };
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+            modal.style.display = "none";
+            }
+        };
+
+        var clickCount = 0;
+        document.getElementById('nextIcon').addEventListener('click', function() {
+            clickCount++;
+
+            var imageElement = document.getElementById("familyImage");
+            var arabicName = document.getElementById('arabicName');
+            var arabicPron = document.getElementById('arabicPron');
+            var audioSourceElement = document.getElementById('audioSource');
+            var audioElement = document.getElementById('playSound');
+
+            if (clickCount === 5) {
+                imageElement.src = "../images/family/sister.png"; 
+                arabicName.innerHTML = "أخت";
+                arabicPron.innerHTML = "'Ukht";
+                audioElement.src = "../audio/sister_audio.mp3";
+
+            } else if (clickCount === 4){
+                imageElement.src = "../images/family/brother.png"; 
+                arabicName.innerHTML = "أخ";
+                arabicPron.innerHTML = "'Akh";
+                audioElement.src = "../audio/brother_audio.mp3";
+            }
+            else if (clickCount === 3){
+                imageElement.src = "../images/family/grandmother.png"; 
+                arabicName.innerHTML = "جدة";
+                arabicPron.innerHTML = "Jaddah/Jeddah";
+                audioElement.src = "../audio/grandmother_audio.mp3";
+            }else if (clickCount === 2){
+                imageElement.src = "../images/family/grandfather.png"; 
+                arabicName.innerHTML = "جد";
+                arabicPron.innerHTML = "Jadd/Jedd/Jid";
+                audioElement.src = "../audio/grandfather_audio.mp3";
+            }else if (clickCount === 1) {
+                imageElement.src = "../images/family/mother.png"; 
+                arabicName.innerHTML = "أم";
+                arabicPron.innerHTML = "'Um";
+                audioElement.src = "../audio/mother_audio.mp3";
+            }
+        });
+
+        document.getElementById("playSoundBtn").addEventListener("click", function() {
+            var audioElement = document.getElementById("playSound");
+            audioElement.play();
+        });
+
     </script>
 </body>
 </html>

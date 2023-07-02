@@ -27,27 +27,10 @@
             justify-content: flex-start;
             align-items: center;
             height: 100vh;
-            
+            overflow: hidden;
         }
 
-        .page {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.5s ease;
-        }
-
-        .current-page {
-            transform: translateX(0);
-          }
-          
-        .next-page {
-            transform: translateX(100%);
-          }
-
-        .current-page .center-button {
+        .center-button {
             display: inline-block;
             padding: 2rem 3rem;
             background-color: #3390d3;
@@ -57,7 +40,6 @@
             font-size: 5rem;
             cursor: pointer;
             text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
-
         }
 
         .text1,.text2 {
@@ -86,48 +68,27 @@
     </style>
 </head>
 <body>
-    <div id="page1" class="page current-page">
-        <div class="text1">
-            <h2>MY ARABIC JOURNEY</h2>
-        </div>
-        <button class="center-button" onclick="navigateToPage('category.html')">
-            <i class="fa-solid fa-play fa-fade" style="color: #ffc644;"></i>
-        </button>
-        <div class="text2">
-            <h2>PRESS TO START</h2>
-        </div>
+    <audio autoplay loop>
+        <source src="audio/Garden.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    <div class="text1">
+        <h2>MY ARABIC JOURNEY</h2>
+    </div>
+    <button class="center-button" onclick="navigateToPage('page2.html')">
+        <i class="fa-solid fa-play fa-fade" style="color: #ffc644;"></i>
+    </button>
+    <div class="text2">
+        <h2>PRESS TO START</h2>
     </div>
 
     <script>
         var centerButton = document.querySelector('.center-button');
-        var body = document.querySelector('body');
-        
+        const clickSound = document.getElementById("clickSound");
+    
         centerButton.addEventListener('click', function() {
-            body.style.backgroundPosition = 'center';
+            window.location.href = 'category.html'; // Redirect to category.html
         });
-
-        function navigateToPage(pageUrl) {
-            var currentPage = document.querySelector('.current-page');
-            var nextPage = document.createElement('iframe');
-            nextPage.classList.add('page', 'next-page');
-            nextPage.src = pageUrl;
-            
-            currentPage.classList.remove('current-page');
-            currentPage.classList.add('next-page');
-            
-            document.body.appendChild(nextPage);
-            
-            setTimeout(function() {
-              nextPage.classList.remove('next-page');
-              nextPage.classList.add('current-page');
-            }, 0);
-            
-            nextPage.addEventListener('load', function() {
-              currentPage.remove();
-              nextPage.classList.remove('next-page');
-              nextPage.classList.add('current-page');
-            });
-          }
     </script>
 </body>
 </html>
