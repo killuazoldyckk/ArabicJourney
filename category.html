@@ -175,7 +175,7 @@
         </div>
         <div id="animalCategory" class="cat2" onmouseenter="showButton('.cat2')" onmouseleave="hideButton('.cat2')" >
             <button id="animalBtn" class="content" data-url="category/animalPage.html" onclick="navigateToPage(this)" disabled>
-                <i id="startIcon" class="fa-solid fa-lock fa-fade" style="color: #ffc644;"></i>
+                <a href="category/animalPage.html"><i id="startIcon" class="fa-solid fa-lock fa-fade" style="color: #ffc644;"></i></a>
             </button>
         </div>
         <div id="bodyCategory" class="cat3" onmouseenter="showButton('.cat3')" onmouseleave="hideButton('.cat3')">
@@ -229,40 +229,35 @@
         });
 
         window.onload = function() {
-            var urlParams = new URLSearchParams(window.location.search);
-            var familyCompleted = urlParams.get("familyCompleted");
-            var animalCompleted = urlParams.get("animalCompleted");
-          
-            if (familyCompleted === "true") {
-                openAnimalCategory();
-                animalBtn.disabled = false;
+            var familyCompleted = localStorage.getItem('family');
+            var animalCompleted = localStorage.getItem('animal');
+      
+            if (familyCompleted === 'completed') {
+                unlockAnimalCategory();
             }
-            if (animalCompleted === "true") {
-                openAnimalCategory();
-                openBodyCategory();
-                bodyBtn.disabled = false;
+
+            function unlockAnimalCategory() {
+                var animalBtn = document.getElementById('animalBtn');
+                var animalCategory = document.getElementById("animalCategory");
+                var normal = document.querySelector('.cat2');
+                animalBtn.disable = false;
+                normal.style.filter = 'none';
+                animalCategory.style.filter ="none";
+    
+                var startIcon = document.getElementById('startIcon')
+                startIcon.classList.add('fa-solid', 'fa-play', 'fa-fade');
             }
-        }
 
-        function openAnimalCategory() {
-            var animalCategory = document.getElementById("animalCategory");
-            var normal = document.querySelector('.cat2');
-            normal.style.filter = 'none';
-
-            var startIcon = document.getElementById('startIcon')
-            startIcon.classList.add('fa-solid', 'fa-play', 'fa-fade');
-        }
-
-        function openBodyCategory() {
-            var bodyCategory = document.getElementById("bodyCategory");
-            var normal2 = document.querySelector('.cat3');
-            normal2.style.filter = 'none';
-
-            var startIcon2 = document.getElementById('startIcon')
-            startIcon.classList.remove('fa-solid fa-lock fa-fade');
-            startIcon.classList.add('fa-solid fa-play fa-fade');
-        }
-
+            function unlockBodyCategory() {
+                var bodyCategory = document.getElementById("bodyCategory");
+                var normal2 = document.querySelector('.cat3');
+                normal2.style.filter = 'none';
+    
+                var startIcon2 = document.getElementById('startIcon')
+                startIcon.classList.remove('fa-solid fa-lock fa-fade');
+                startIcon.classList.add('fa-solid fa-play fa-fade');
+            }
+          }
 
     </script>
     

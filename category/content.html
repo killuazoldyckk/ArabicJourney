@@ -404,8 +404,9 @@
 
             
             if (clickCount === 6) {
-                window.location.href = "../category.html?familyCompleted=true";
-            } 
+                saveProgress('family');
+                location.href = '../category.html'; // Redirect to category.html
+            }
             else if (clickCount === 5){
                 imageElement.src = "../images/family/sister.png"; 
                 arabicName.innerHTML = "أخت";
@@ -433,6 +434,10 @@
                 arabicName.innerHTML = "أم";
                 arabicPron.innerHTML = "'Um";
                 audioElement.src = "../audio/mother_audio.mp3";
+            }
+
+            function saveProgress(category) {
+                localStorage.setItem(category, 'completed');
             }
         });
 

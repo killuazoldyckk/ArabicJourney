@@ -20,7 +20,7 @@
         }
 
         body {
-            background-image: url('../images/animalCat.jpg');
+            background-image: url('../images/familyBg.png');
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -124,16 +124,6 @@
         .bot-icon img{
             width: 10rem;
             margin: 2rem;
-            animation: beat 1s infinite;
-        }
-
-        @keyframes beat {
-        0%, 100% {
-            transform: scale(1);
-        }
-        50% {
-            transform: scale(1.2);
-        }
         }
 
         .modal {
@@ -218,7 +208,7 @@
     </div>
     <div class="textBox">
         <h3>Adam</h3>
-        <p id="textContent">Assalamuaikum, Buddies !Congratulation for completing Family Member Category. Now, Let's Move to the next Category !! <br></p>
+        <p id="textContent">Assalamuaikum, Buddies ! My name is Adam, and i will accompany your journey for learning Arabic in here. <br></p>
     </div>
 
     <div id="modal" class="modal">
@@ -255,9 +245,9 @@
             clickCount++;
 
             if (clickCount === 2) {
-                window.location.href = "content2.php"; // Replace with the URL of the destination page
+                window.location.href = "content.html"; 
             } else {
-            var textContent = "Here, we are going to learn Animals in Arabic. It will be soo fun, believe me !!"; // Replace with the new content you want
+            var textContent = "First, i will give the instruction on how to play this game. So, make sure you're paying attention , Ok Buddies ?"; // Replace with the new content you want
             
             var textBox = document.getElementById('textContent');
             textBox.classList.add('fade-out');
