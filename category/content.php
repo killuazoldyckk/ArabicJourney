@@ -17,7 +17,6 @@
             padding: 0;
             box-sizing: border-box;
             text-decoration: none;
-
         }
 
         body {
@@ -113,6 +112,7 @@
             margin: 2rem;
         }
 
+    
         .modal {
             display: none;
             position: fixed;
@@ -123,9 +123,9 @@
             height: 100%;
             overflow: auto;
             background-color: rgba(0, 0, 0, 0.5);
-          }
-        
-          .modal-content {
+        }
+    
+        .modal-content {
             background-image: url('../images/menuBg.jpg');
             background-position: center;
             background-repeat: no-repeat;
@@ -139,38 +139,158 @@
             position: relative;
             text-align: center;
             font-family: 'Montserrat', sans-serif;
-          }
+        }
 
-          .modal-content h1{
+        .modal-content h1{
             font-family: 'Luckiest Guy', cursive;
             letter-spacing: 1rem;
             color: white;
             margin-top: -4rem;
             margin-bottom: 2rem;
-          }
+        }
 
-          .modal-content h2{
+        .modal-content h2{
             font-family: 'Luckiest Guy', cursive;
             color: #da6969;
             padding-bottom: 2rem;
-          }
+        }
 
-          .modal-content p{
+        .modal-content p{
             background-color: #da6969;
             display: inline;
             color: white;        
             padding: 0.5rem;
             border-radius: 1rem;
             cursor: pointer;    
-          }
+        }
 
-          .modal-content p i{
+        .modal-content p i{
             margin-right: 0.9rem;
+        }
+
+        .modal-content p a{
+            color: white;
+        }
+        
+        .modal-2 {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-content-2 {
+            margin: auto;
+            padding: 20px;
+            border: none;
+            width: 80%;
+            height: 80%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .close2 {
+            color: white;
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close2:hover,
+        .close2:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .char .boy{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 16rem;
+            margin: 0 3rem;
+        }
+
+        .textBox{
+            position: absolute;
+            bottom: 0;
+            display: block;
+            width: 50%;
+            height: 20%;
+            border-radius: 1rem;
+            margin-top: auto;
+            border: 0.5rem solid rgb(208, 50, 50);
+            background-color:blanchedalmond ;
+            animation: slide-in 1.5s ease-in-out forwards; 
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        @keyframes slide-in {
+            from {
+              opacity: 0;
+              transform: translateY(100%);
+            }
+            to {
+              opacity: 1; 
+              transform: translateY(0); 
+            }
           }
 
-          .modal-content p a{
-            color: white;
-          }
+        .textBox p{
+            padding: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 200;
+            opacity: 1;
+            transition: opacity 0.5s;
+
+        }
+
+        .textBox p.fade-out {
+            opacity: 0;
+        }
+
+        .textBox h3{
+            padding-left: 1rem;
+            padding-top: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            color: brown;
+        }
+
+        .bot-icon2{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            cursor: pointer;
+        }
+
+        .bot-icon2 img{
+            width: 10rem;
+            margin: 2rem;
+            animation: beat 1s infinite;
+        }
+
+        @keyframes beat {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.2);
+        }
+        }
+
         
     </style>
 </head>
@@ -207,12 +327,28 @@
 
     <div id="modal" class="modal">
         <div class="modal-content">
-          <h1>PAUSE</h1>
-          <h2>Hello Buddies</h2>
-          <p><a href="../index.php"><i class="fa-solid fa-house fa-beat-fade"></i>Back To Homepage</a></p><br><br><br>
-          <p class="close"><i class="fa-solid fa-circle-pause fa-beat-fade"></i>Resume</p>
+            <h1>PAUSE</h1>
+            <h2>Hello Buddies</h2>
+            <p><a href="../index.php"><i class="fa-solid fa-house fa-beat-fade"></i>Back To Homepage</a></p><br><br><br>
+            <p class="close"><i class="fa-solid fa-circle-pause fa-beat-fade"></i>Resume</p>
         </div>
-      </div>
+    </div>
+
+    <div id="modal-2" class="modal-2">
+        <div class="modal-content-2">
+            <span class="close2">&times;</span>
+            <div class="char">
+                <img class="boy" src="../images/char/boy.png" alt="">
+            </div>
+            <div class="textBox" id="boxHeight">
+                <h3>Adam</h3>
+                <p id="textContent">So, this will be the your gaming interface. Let's take a look what do we have in here !<br></p>
+            </div>
+            <div class="bot-icon2" id="nextIcon2">
+                <img src="../images/icon/next.png" alt="">
+            </div>        
+        </div>
+    </div>
 
     <script>
         var audio = document.getElementById("background-music");
@@ -232,7 +368,6 @@
   
         backButton.addEventListener("click", function() {
             history.back();
-            clickSound.play();
         });
 
         var modal = document.getElementById("modal");
@@ -302,6 +437,55 @@
             audioElement.play();
         });
 
+        window.onload = function() {
+            var modal2 = document.getElementById("modal-2");
+            var closeButton2 = document.getElementsByClassName("close2")[0];
+
+            setTimeout(function() {
+            modal2.style.display = "block";
+            }, 2000); 
+
+            closeButton2.onclick = function() {
+            modal2.style.display = "none";
+            }
+        };
+
+        var clickCount2 = 0;
+
+        document.getElementById('nextIcon2').addEventListener('click', function() {
+            var modal2 = document.getElementById("modal-2");
+            clickCount2++;
+
+            if (clickCount2 === 4) {
+                modal2.style.display = "none";
+            } else if (clickCount2 === 3){
+            var textContent3 = "On the right corner, there is Menu Button. When this button get clicked, it will automatically pause the Music Background and will show the two menu that you could choose. First is Back to Homepage and the other is Resume Button to close the Menu. ";
+            var boxHeight = document.getElementById('boxHeight');
+            var textBox3 = document.getElementById('textContent');
+            textBox3.classList.add('fade-out');
+            setTimeout(function() {
+                boxHeight.style.height = "25%";
+                textBox3.innerHTML = textContent3;
+                textBox3.classList.remove('fade-out');
+            }, 500);
+            } else if (clickCount2 === 2){
+                var textContent2 = "Beside Back Button is Audio Button. Clicking it will Turn Off the Music Background. But don't worry since you can turn the music on again by clicking this button again. ";
+                var textBox2 = document.getElementById('textContent');
+                textBox2.classList.add('fade-out');
+                setTimeout(function() {
+                    textBox2.innerHTML = textContent2;
+                    textBox2.classList.remove('fade-out');
+                }, 500);
+            } else if (clickCount2 === 1){
+                var textContent = "Let us start with buttons. At the top right corner is Back Button. Clicking it will direct you to previous page.";
+                var textBox = document.getElementById('textContent');
+                textBox.classList.add('fade-out');
+                setTimeout(function() {
+                    textBox.innerHTML = textContent;
+                    textBox.classList.remove('fade-out');
+                }, 500);
+            }
+        });
     </script>
 </body>
 </html>
