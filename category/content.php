@@ -357,10 +357,10 @@
         function toggleAudio() {
         if (audio.paused) {
             audio.play();
-            audioControl.src = "../images/icon/soundOn.png"; // Mengganti gambar dengan ikon pause
+            audioControl.src = "../images/icon/soundOn.png"; // Mengganti gambar dengan ikon play
         } else {
             audio.pause();
-            audioControl.src = "../images/icon/soundMute.png"; // Mengganti gambar dengan ikon play
+            audioControl.src = "../images/icon/soundMute.png"; // Mengganti gambar dengan ikon pause
         }
         }
 
@@ -402,13 +402,17 @@
             var audioSourceElement = document.getElementById('audioSource');
             var audioElement = document.getElementById('playSound');
 
-            if (clickCount === 5) {
+            
+            if (clickCount === 6) {
+                window.location.href = "../category.html?familyCompleted=true";
+            } 
+            else if (clickCount === 5){
                 imageElement.src = "../images/family/sister.png"; 
                 arabicName.innerHTML = "أخت";
                 arabicPron.innerHTML = "'Ukht";
                 audioElement.src = "../audio/sister_audio.mp3";
-
-            } else if (clickCount === 4){
+            } 
+            else if (clickCount === 4){
                 imageElement.src = "../images/family/brother.png"; 
                 arabicName.innerHTML = "أخ";
                 arabicPron.innerHTML = "'Akh";
@@ -433,6 +437,10 @@
         });
 
         document.getElementById("playSoundBtn").addEventListener("click", function() {
+
+            audio.pause();
+            audioControl.src = "../images/icon/soundMute.png"; 
+
             var audioElement = document.getElementById("playSound");
             audioElement.play();
         });

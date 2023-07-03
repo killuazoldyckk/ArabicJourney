@@ -168,19 +168,19 @@
         <h2>SELECT YOUR CATEGORY</h2>
     </div>
     <div class="select">
-        <div class="cat1" onmouseenter="showButton('.cat1')" onmouseleave="hideButton('.cat1')">
+        <div id="familyCategory" class="cat1" onmouseenter="showButton('.cat1')" onmouseleave="hideButton('.cat1')">
             <button class="content" data-url="category/familyPage.html" onclick="navigateToPage(this)">
                 <i class="fa-solid fa-play fa-fade" style="color: #ffc644;"></i>
             </button>
         </div>
-        <div class="cat2" onmouseenter="showButton('.cat2')" onmouseleave="hideButton('.cat2')" >
-            <button class="content" data-url="category/animalPage.html" onclick="navigateToPage(this)" disabled>
-                <i class="fa-solid fa-lock fa-fade" style="color: #ffc644;"></i>
+        <div id="animalCategory" class="cat2" onmouseenter="showButton('.cat2')" onmouseleave="hideButton('.cat2')" >
+            <button id="animalBtn" class="content" data-url="category/animalPage.html" onclick="navigateToPage(this)" disabled>
+                <i id="startIcon" class="fa-solid fa-lock fa-fade" style="color: #ffc644;"></i>
             </button>
         </div>
-        <div class="cat3" onmouseenter="showButton('.cat3')" onmouseleave="hideButton('.cat3')">
-            <button class="content" data-url="category/bodyPage.html" onclick="navigateToPage(this)" disabled>
-                <i class="fa-solid fa-lock fa-fade" style="color: #ffc644;"></i>
+        <div id="bodyCategory" class="cat3" onmouseenter="showButton('.cat3')" onmouseleave="hideButton('.cat3')">
+            <button id="bodyBtn" class="content" data-url="category/bodyPage.html" onclick="navigateToPage(this)" disabled>
+                <i id="startIcon" class="fa-solid fa-lock fa-fade" style="color: #ffc644;"></i>
             </button>
         </div>
     </div>
@@ -227,6 +227,43 @@
             history.back();
             clickSound.play();
         });
+
+        window.onload = function() {
+            var urlParams = new URLSearchParams(window.location.search);
+            var familyCompleted = urlParams.get("familyCompleted");
+            var animalCompleted = urlParams.get("animalCompleted");
+          
+            if (familyCompleted === "true") {
+                openAnimalCategory();
+                animalBtn.disabled = false;
+            }
+            if (animalCompleted === "true") {
+                openAnimalCategory();
+                openBodyCategory();
+                bodyBtn.disabled = false;
+            }
+        }
+
+        function openAnimalCategory() {
+            var animalCategory = document.getElementById("animalCategory");
+            var normal = document.querySelector('.cat2');
+            normal.style.filter = 'none';
+
+            var startIcon = document.getElementById('startIcon')
+            startIcon.classList.add('fa-solid', 'fa-play', 'fa-fade');
+        }
+
+        function openBodyCategory() {
+            var bodyCategory = document.getElementById("bodyCategory");
+            var normal2 = document.querySelector('.cat3');
+            normal2.style.filter = 'none';
+
+            var startIcon2 = document.getElementById('startIcon')
+            startIcon.classList.remove('fa-solid fa-lock fa-fade');
+            startIcon.classList.add('fa-solid fa-play fa-fade');
+        }
+
+
     </script>
     
 
