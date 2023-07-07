@@ -6,20 +6,20 @@ const topicList = [
     {
         id: 0,
         topicImg: html,
-        title: "Basic HTML",
-        topic: "HTML"
+        title: "Family Quiz",
+        topic: "Family"
     },
     {
         id: 1,
         topicImg: css,
-        title: "Basic CSS",
-        topic: "CSS"
+        title: "Animal Quiz",
+        topic: "Animal"
     },
     {
         id: 2,
         topicImg: js,
-        title: "Basic JavaScript",
-        topic: "JS"
+        title: "Body Part Quiz",
+        topic: "Body"
     },
 ]
 

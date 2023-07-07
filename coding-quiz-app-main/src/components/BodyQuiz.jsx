@@ -1,51 +1,69 @@
 import { useState } from "react"
 import checked from '../assets/checked.png'
 import cross from '../assets/cross.png'
+import '../css/file.css';
+import farm from '../images/body/farm.png'
+import foot from '../images/body/foot.png'
+import hand from '../images/body/hand.png'
+import head from '../images/body/head.png'
+import uarm from '../images/body/uarm.png'
+import leg from '../images/body/leg.png'
 
-const JsQuiz = ({ handleBackToHome }) => {
+const BodyQuiz = ({ handleBackToHome }) => {
 
     const questions = [
         {
-            questionText: 'Which is the correct way to write a comment in JavaScript?',
+            image:farm,
             answerOptions: [
-                { answerText: '<!--- .... ---!>', isCorrect: false },
-                { answerText: '{# ... #}', isCorrect: false },
-                { answerText: '// ....', isCorrect: true },
-                { answerText: '\\ ...', isCorrect: false },
+                { answerText: 'يُسلِّم', isCorrect: false },
+                { answerText: 'ساعد', isCorrect: true },
+                { answerText: 'صديق', isCorrect: false },
+                { answerText: 'امرأة', isCorrect: false },
             ],
         },
         {
-            questionText: 'JavaScript is not a case-sensitive language.',
+            image:leg,
             answerOptions: [
-                { answerText: 'True', isCorrect: false },
-                { answerText: 'False', isCorrect: true },
+                { answerText: 'رجل', isCorrect: true },
+                { answerText: 'قدم', isCorrect: false },
+                { answerText: 'امرأة', isCorrect: false },
+                { answerText: 'صديق', isCorrect: false },
             ],
         },
         {
-            questionText: 'Inside which element do you put JavaScript?',
+            image:head,
             answerOptions: [
-                { answerText: '<var>...</var>', isCorrect: false },
-                { answerText: '<script>...</script>', isCorrect: true },
-                { answerText: '<code>...</code>', isCorrect: false },
-                { answerText: '<section>...</section>', isCorrect: false },
+                { answerText: 'رأس', isCorrect: true },
+                { answerText: 'جدتي', isCorrect: false },
+                { answerText: 'امرأة', isCorrect: false },
+                { answerText: 'قدم', isCorrect: false },
             ],
         },
         {
-            questionText: 'How do you write "Hello World" in an alert box?',
+            image:uarm,
             answerOptions: [
-                { answerText: 'alertBox("Hello World");', isCorrect: false },
-                { answerText: 'alert("Hello World");', isCorrect: true },
-                { answerText: 'msg("Hello World");', isCorrect: false },
-                { answerText: 'modal("Hello World");', isCorrect: false },
+                { answerText: 'أخت', isCorrect: false },
+                { answerText: 'امرأة', isCorrect: false },
+                { answerText: 'جدتي', isCorrect: false },
+                { answerText: 'الذراع العلوية', isCorrect: true },
             ],
         },
         {
-            questionText: 'Which array method sorts the elements of an array?',
+            image:hand,
             answerOptions: [
-                { answerText: 'order()', isCorrect: false },
-                { answerText: 'changeOrder(order)', isCorrect: false },
-                { answerText: 'sort()', isCorrect: true },
-                { answerText: 'None of the above', isCorrect: false },
+                { answerText: 'الذراع العلوية', isCorrect: false },
+                { answerText: 'رأس', isCorrect: false },
+                { answerText: 'يُسلِّم', isCorrect: true },
+                { answerText: 'صديق', isCorrect: false },
+            ],
+        },
+        {
+            image:foot,
+            answerOptions: [
+                { answerText: 'قدم', isCorrect: true },
+                { answerText: 'رأس', isCorrect: false },
+                { answerText: 'امرأة', isCorrect: false },
+                { answerText: 'الذراع العلوية', isCorrect: false },
             ],
         },
     ]
@@ -93,7 +111,14 @@ const JsQuiz = ({ handleBackToHome }) => {
                         <>
 
                             <div className="bg-blue-400 text-center px-4 py-2 rounded-t-lg">
-                                <h2 className="text-2xl text-white font-semibold tracking-wide">Basic JS</h2>
+                                <h2 className="text-2xl text-white font-semibold tracking-wide">Body Part Quiz</h2>
+                            </div>
+                            <div className="image-container">
+                                <img 
+                                    src={questions[currentIndex].image}
+                                    alt="Body Quiz"
+                                    className="image"
+                                />
                             </div>
                             <div className="py-8 px-4">
                                 <div className="pb-2">
@@ -117,4 +142,4 @@ const JsQuiz = ({ handleBackToHome }) => {
     )
 }
 
-export default JsQuiz
+export default BodyQuiz

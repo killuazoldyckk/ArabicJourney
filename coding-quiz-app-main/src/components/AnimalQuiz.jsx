@@ -1,52 +1,89 @@
 import { useState } from "react"
 import checked from '../assets/checked.png'
 import cross from '../assets/cross.png'
+import '../css/file.css';
+import bear from '../images/animals/bear.png'
+import deer from '../images/animals/deer.png'
+import giraffe from '../images/animals/giraffe.png'
+import monkey from '../images/animals/monkey.png'
+import owl from '../images/animals/owl.png'
+import pelican from '../images/animals/pelican.png'
+import tucan from '../images/animals/tucan.png'
+import turkey from '../images/animals/turkey.png'
 
-const CssQuiz = ({ handleBackToHome }) => {
+const AnimalQuiz = ({ handleBackToHome }) => {
 
     const questions = [
         {
-            questionText: 'CSS stands for',
+            image:bear,
             answerOptions: [
-                { answerText: 'Cascading Style Sheets', isCorrect: true },
-                { answerText: 'Computer Style Sheets', isCorrect: false },
-                { answerText: 'Creative Style Sheets', isCorrect: false },
+                { answerText: 'بُومَة', isCorrect: false },
+                { answerText: 'صديق', isCorrect: false },
+                { answerText: 'أخت', isCorrect: false },
+                { answerText: 'دُبٌّ', isCorrect: true },
             ],
         },
         {
-            questionText: 'How can you add space between the border and inner content of the element?',
+            image:deer,
             answerOptions: [
-                { answerText: 'margin', isCorrect: false },
-                { answerText: 'space', isCorrect: false },
-                { answerText: 'padding', isCorrect: true },
-                { answerText: 'border', isCorrect: false },
+                { answerText: 'دُبٌّ', isCorrect: false },
+                { answerText: 'جدتي', isCorrect: false },
+                { answerText: 'صديق', isCorrect: false },
+                { answerText: 'عزيزي', isCorrect: true },
             ],
         },
         {
-            questionText: 'How to set a style for a certain HTML element with an id of "special"?',
+            image:giraffe,
             answerOptions: [
-                { answerText: '.special{ }', isCorrect: false },
-                { answerText: 'id.special{ }', isCorrect: false },
-                { answerText: '#special{ }', isCorrect: true },
-                { answerText: 'element.id.special{ }', isCorrect: false },
+                { answerText: 'زرافة', isCorrect: true },
+                { answerText: 'جدتي', isCorrect: false },
+                { answerText: 'دُبٌّ', isCorrect: false },
+                { answerText: 'صديق', isCorrect: false },
             ],
         },
         {
-            questionText: 'Which property do you need to change the text color of an element?',
+            image:monkey,
             answerOptions: [
-                { answerText: 'fontcolor', isCorrect: false },
-                { answerText: 'color', isCorrect: true },
-                { answerText: 'font-color', isCorrect: false },
-                { answerText: 'text-color', isCorrect: false },
+                { answerText: 'زرافة', isCorrect: false },
+                { answerText: 'جدتي', isCorrect: false },
+                { answerText: 'ةقرد', isCorrect: true },
+                { answerText: 'صديق', isCorrect: false }
             ],
         },
         {
-            questionText: 'Which selector do you need to define a style for multiple elements?',
+            image:owl,
             answerOptions: [
-                { answerText: 'id', isCorrect: false },
-                { answerText: 'class', isCorrect: true },
-                { answerText: 'text', isCorrect: false },
-                { answerText: 'style', isCorrect: false },
+                { answerText: 'أخت', isCorrect: true },
+                { answerText: 'ةقرد', isCorrect: false },
+                { answerText: 'صديق', isCorrect: false },
+                { answerText: 'صديق', isCorrect: false },
+            ],
+        },
+        {
+            image:pelican,
+            answerOptions: [
+                { answerText: 'أخت', isCorrect: false },
+                { answerText: 'صديق', isCorrect: false },
+                { answerText: 'بُومَة', isCorrect: true },
+                { answerText: 'صديق', isCorrect: false }
+            ],
+        },
+        {
+            image:tucan,
+            answerOptions: [
+                { answerText: 'جدتي', isCorrect: false },
+                { answerText: 'امرأة', isCorrect: false },
+                { answerText: 'الطوقان', isCorrect: true },
+                { answerText: 'صديق', isCorrect: false },
+            ],
+        },
+        {
+            image:turkey,
+            answerOptions: [
+                { answerText: 'جدتي', isCorrect: false },
+                { answerText: 'امرأة', isCorrect: false },
+                { answerText: 'صديق', isCorrect: false },
+                { answerText: 'ديك رومى', isCorrect: true },
             ],
         },
     ]
@@ -94,7 +131,14 @@ const CssQuiz = ({ handleBackToHome }) => {
                         <>
 
                             <div className="bg-blue-400 text-center px-4 py-2 rounded-t-lg">
-                                <h2 className="text-2xl text-white font-semibold tracking-wide">Basic CSS</h2>
+                                <h2 className="text-2xl text-white font-semibold tracking-wide">Animals Quiz</h2>
+                            </div>
+                            <div className="image-container">
+                                <img 
+                                    src={questions[currentIndex].image}
+                                    alt="Animal Quiz"
+                                    className="image"
+                                />
                             </div>
                             <div className="py-8 px-4">
                                 <div className="pb-2">
@@ -118,4 +162,4 @@ const CssQuiz = ({ handleBackToHome }) => {
     )
 }
 
-export default CssQuiz
+export default AnimalQuiz

@@ -5,8 +5,291 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Body Part</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+
+        body {
+            background-image: url('../images/bodyCat.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .top-icon{
+            display: flex;
+            flex-direction: row;
+            margin: 1rem;
+            width: 100%;
+        }
+
+        .top-icon img{
+            cursor: pointer;
+        }
+
+        .top-icon .backIcon{
+            width: 5rem;
+            margin-right: 1rem;
+            margin-left: 0.5rem;
+        }
+
+        .top-icon .soundIcon{
+            width: 4.5rem;
+            height: 4.9rem;
+        }
+
+        .top-icon .menuIcon{
+            margin-right: 1rem ;
+            height: 4rem;
+            margin-left: auto;
+            width: 4rem;
+        }
+
+        .char .boy{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 16rem;
+            margin: 0 3rem;
+        }
+
+        .textBox{
+            display: block;
+            width: 50%;
+            height: 20%;
+            border-radius: 1rem;
+            margin-top: auto;
+            border: 0.5rem solid rgb(208, 50, 50);
+            background-color:blanchedalmond ;
+            animation: slide-in 1.5s ease-in-out forwards; 
+            margin-bottom: 1rem;
+        }
+
+        @keyframes slide-in {
+            from {
+              opacity: 0;
+              transform: translateY(100%);
+            }
+            to {
+              opacity: 1; 
+              transform: translateY(0); 
+            }
+          }
+
+        .textBox p{
+            padding: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 200;
+            opacity: 1;
+            transition: opacity 0.5s;
+
+        }
+
+        .textBox p.fade-out {
+            opacity: 0;
+        }
+
+        .textBox h3{
+            padding-left: 1rem;
+            padding-top: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            color: brown;
+
+        }
+
+        .bot-icon{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            cursor: pointer;
+        }
+
+        .bot-icon img{
+            width: 10rem;
+            margin: 2rem;
+            animation: beat 1s infinite;
+        }
+
+        @keyframes beat {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.2);
+        }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+          }
+        
+          .modal-content {
+            background-image: url('../images/menuBg.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 15% auto;
+            padding: 1rem;
+            border-radius: 1rem;
+            border: 0.5rem solid #da6969;
+            width: 80%;
+            max-width: 500px;
+            position: relative;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+          }
+
+          .modal-content h1{
+            font-family: 'Luckiest Guy', cursive;
+            letter-spacing: 1rem;
+            color: white;
+            margin-top: -4rem;
+            margin-bottom: 2rem;
+          }
+
+          .modal-content h2{
+            font-family: 'Luckiest Guy', cursive;
+            color: #da6969;
+            padding-bottom: 2rem;
+          }
+
+          .modal-content p{
+            background-color: #da6969;
+            display: inline;
+            color: white;        
+            padding: 0.5rem;
+            border-radius: 1rem;
+            cursor: pointer;    
+          }
+
+          .modal-content p i{
+            margin-right: 0.9rem;
+          }
+
+          .modal-content p a{
+            color: white;
+          }
+        
+
+        
+
+    </style>
 </head>
 <body>
-    
+    <audio  id="background-music"" autoplay loop>
+        <source src="../audio/Garden.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>      
+    <div class="top-icon">
+        <img class="backIcon" src="../images/icon/back.png" id="backButton">
+        <img class="soundIcon" src="../images/icon/soundOn.png" title="On/Off Music" id="audio-control" alt="Play" onclick="toggleAudio()">
+        <img id="modal-trigger" class="menuIcon" src="../images/icon/menu.png" alt="">
+    </div>
+    <div class="char">
+        <img class="boy" src="../images/char/boy.png" alt="">
+    </div>
+    <div class="bot-icon" id="nextIcon">
+        <img src="../images/icon/next.png" alt="">
+    </div>
+    <div class="textBox">
+        <h3>Adam</h3>
+        <p id="textContent">Assalamuaikum, Buddies ! You're doing greattt for completing Animals Category. Now, We are going to move to the last Category !! <br></p>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+          <h1>PAUSE</h1>
+          <h2>Hello Buddies</h2>
+          <p><a href="../index.html"><i class="fa-solid fa-house fa-beat-fade"></i>Back To Homepage</a></p><br><br><br>
+          <p class="close"><i class="fa-solid fa-circle-pause fa-beat-fade"></i>Resume</p>
+        </div>
+      </div>
+
+    <script>
+        var audio = document.getElementById("background-music");
+        var audioControl = document.getElementById("audio-control");
+
+        function toggleAudio() {
+            if (audio.paused) {
+                audio.play();
+                audioControl.src = "../images/icon/soundOn.png"; 
+            } else {
+                audio.pause();
+                audioControl.src = "../images/icon/soundMute.png"; 
+            }
+        }
+
+        const backButton = document.getElementById("backButton");
+  
+        backButton.addEventListener("click", function() {
+            history.back();
+        });
+
+        var clickCount = 0;
+        document.getElementById('nextIcon').addEventListener('click', function() {
+            clickCount++;
+
+            if (clickCount === 2) {
+                window.location.href = "content3.html"; 
+            } else {
+            var textContent = "In this stage, you will learn about your Body Parts in Arabic."; // Replace with the new content you want
+            
+            var textBox = document.getElementById('textContent');
+            textBox.classList.add('fade-out');
+
+            setTimeout(function() {
+                textBox.innerHTML = textContent;
+                textBox.classList.remove('fade-out');
+            }, 500);
+        }
+        });
+
+        var modal = document.getElementById("modal");
+        var modalTrigger = document.getElementById("modal-trigger");
+        var closeButton = document.getElementsByClassName("close")[0];
+
+        modalTrigger.onclick = function() {
+            audio.pause();
+            audioControl.src = "../images/icon/soundMute.png"; 
+            modal.style.display = "block";
+        };
+
+        closeButton.onclick = function() {
+            audio.play();
+            audioControl.src = "../images/icon/soundOn.png"; 
+            modal.style.display = "none";
+        };
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+            modal.style.display = "none";
+            }
+        };
+    </script>
 </body>
 </html>

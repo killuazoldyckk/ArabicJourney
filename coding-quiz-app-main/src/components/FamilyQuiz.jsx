@@ -8,7 +8,7 @@ import grandFather from '../images/family/grandfather.png';
 import grandMother from '../images/family/grandmother.png';
 import motherImage from '../images/family/mother.png';
 import sisterImage from '../images/family/sister.png';
-const HtmlQuiz = ({ handleBackToHome }) => {
+const FamilyQuiz = ({ handleBackToHome }) => {
     const questions = [
         {
             image:brotherImage,
@@ -116,7 +116,7 @@ const HtmlQuiz = ({ handleBackToHome }) => {
                                 <img
                                     //https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Medan_city_2019.jpg/600px-Medan_city_2019.jpg
                                     src={questions[currentIndex].image}
-                                    alt="HTML tutorial"
+                                    alt="Family Quiz"
                                     className="image"
                                 />   
                             </div>
@@ -142,4 +142,4 @@ const HtmlQuiz = ({ handleBackToHome }) => {
     )
 }
 
-export default HtmlQuiz
+export default FamilyQuiz

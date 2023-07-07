@@ -1,3 +1,6 @@
 body{
-    background-color: aliceblue;
+    background-image: url('/prototype/images/quizBg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

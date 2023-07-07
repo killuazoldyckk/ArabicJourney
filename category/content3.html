@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Family</title>
+    <title>Body Part</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@
         }
 
         body {
-            background-image: url('../images/animalCat.jpg');
+            background-image: url('../images/bodyCat.jpg');
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -125,7 +125,7 @@
         }
     
         .modal-content {
-            background-image: url('../images/menuBg.jpg');
+            background-image: url('../images/bodyCat.jpg');
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -192,16 +192,16 @@
         <img src="../images/icon/next.png" alt="">
     </div>
     <div class="content">
-        <img id="familyImage" src="../images/animals/bear.png" alt="">
+        <img id="familyImage" src="../images/body/Frame 24.png" alt="">
         <p id="playSoundBtn">
             <i class="fas fa-volume-up"></i>
             Play Sound
         </p>
         <p class="arabic" id="arabicName">
-            دُبٌّ
+            جزء من الجسم
         </p>
         <p class="pron" id="arabicPron">
-            Dubb
+            juz' min aljism
         </p>
     </div>
 
@@ -268,49 +268,43 @@
             var audioElement = document.getElementById('playSound');
 
             
-            if (clickCount === 8) {
-                saveProgress('animal');
-                window.location.replace('http://localhost:5000/quiz/Animal');
+            if (clickCount === 7) {
+                saveProgress('body');
+                window.location.replace('http://localhost:5000/quiz/Body');
             }
-            else if (clickCount === 7){
-                imageElement.src = "../images/animals/turkey.png";  
-                arabicName.innerHTML = "ديك رومى";
-                arabicPron.innerHTML = "Dik Ruma";
-                audioElement.src = "../audio/turkey_audio.mp3";
-            } 
             else if (clickCount === 6){
-                imageElement.src = "../images/animals/pelican.png";  
-                arabicName.innerHTML = "بُومَة";
-                arabicPron.innerHTML = "Buma";
-                audioElement.src = "../audio/pelican_audio.mp3";
+                imageElement.src = "../images/body/foot.png";  
+                arabicName.innerHTML = "قدم";
+                arabicPron.innerHTML = "Qudim";
+                audioElement.src = "../audio/foot_audio.mp3";
             } 
             else if (clickCount === 5){
-                imageElement.src = "../images/animals/owl.png";  
-                arabicName.innerHTML = "أخت";
-                arabicPron.innerHTML = "'Ukht";
-                audioElement.src = "../audio/owl_audio.mp3";
+                imageElement.src = "../images/body/leg.png";  
+                arabicName.innerHTML = "رجل";
+                arabicPron.innerHTML = "Rajul";
+                audioElement.src = "../audio/leg_audio.mp3";
             } 
             else if (clickCount === 4){
-                imageElement.src = "../images/animals/tucan.png"; 
-                arabicName.innerHTML = "الطوقان";
-                arabicPron.innerHTML = "Altawqan";
-                audioElement.src = "../audio/tucan_audio.mp3";
+                imageElement.src = "../images/body/hand.png"; 
+                arabicName.innerHTML = "يُسلِّم";
+                arabicPron.innerHTML = "Yusllim";
+                audioElement.src = "../audio/hand_audio.mp3";
             }
             else if (clickCount === 3){
-                imageElement.src = "../images/animals/monkey.png"; 
-                arabicName.innerHTML = "ةقرد";
-                arabicPron.innerHTML = "Qird";
-                audioElement.src = "../audio/monkey_audio.mp3";
+                imageElement.src = "../images/body/farm.png"; 
+                arabicName.innerHTML = "ساعد";
+                arabicPron.innerHTML = "Saeid";
+                audioElement.src = "../audio/grandmother_audio.mp3";
             }else if (clickCount === 2){
-                imageElement.src = "../images/animals/giraffe.png"; 
-                arabicName.innerHTML = "زرافة";
-                arabicPron.innerHTML = "Zarafatan";
-                audioElement.src = "../audio/giraffe_audio.mp3";
+                imageElement.src = "../images/body/uarm.png"; 
+                arabicName.innerHTML = "الذراع العلوية";
+                arabicPron.innerHTML = "Aldhirae Aleulwia";
+                audioElement.src = "../audio/uarm_audio.mp3";
             }else if (clickCount === 1) {
-                imageElement.src = "../images/animals/deer.png"; 
-                arabicName.innerHTML = "عزيزي";
-                arabicPron.innerHTML = "'Azizi";
-                audioElement.src = "../audio/deer_audio.mp3";
+                imageElement.src = "../images/body/head.png"; 
+                arabicName.innerHTML = "رأس";
+                arabicPron.innerHTML = "Ras";
+                audioElement.src = "../audio/head_audio.mp3";
             }
 
             function saveProgress(category) {

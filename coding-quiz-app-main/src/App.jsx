@@ -2,10 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useParams, useNavigate } from 'react-router-dom';
 import './App.css';
 import { useState } from 'react';
-import HtmlQuiz from './components/HtmlQuiz';
-import CssQuiz from './components/CssQuiz';
+import FamilyQuiz from './components/FamilyQuiz';
+import AnimalQuiz from './components/AnimalQuiz';
 import topicList from './components/TopicData';
-import JsQuiz from './components/JsQuiz';
+import BodyQuiz from './components/BodyQuiz';
 
 function Home() {
   const [selectedTopic, setSelectedTopic] = useState(null);
@@ -19,14 +19,14 @@ function Home() {
   };
 
   const renderSingleQuiz = () => {
-    if (selectedTopic === 'HTML') {
-      return <HtmlQuiz handleBackToHome={handleBackToHome} />;
+    if (selectedTopic === 'Family') {
+      return <FamilyQuiz handleBackToHome={handleBackToHome} />;
     }
-    if (selectedTopic === 'CSS') {
-      return <CssQuiz handleBackToHome={handleBackToHome} />;
+    if (selectedTopic === 'Animal') {
+      return <AnimalQuiz handleBackToHome={handleBackToHome} />;
     }
-    if (selectedTopic === 'JS') {
-      return <JsQuiz handleBackToHome={handleBackToHome} />;
+    if (selectedTopic === 'Body') {
+      return <BodyQuiz handleBackToHome={handleBackToHome} />;
     }
     return null;
   };
@@ -91,14 +91,14 @@ function Quiz() {
   };
 
   const renderQuiz = () => {
-    if (topic === 'HTML') {
-      return <HtmlQuiz handleBackToHome={handleBackToHome} />;
+    if (topic === 'Family') {
+      return <FamilyQuiz handleBackToHome={handleBackToHome} />;
     }
-    if (topic === 'CSS') {
-      return <CssQuiz handleBackToHome={handleBackToHome} />;
+    if (topic === 'Animal') {
+      return <AnimalQuiz handleBackToHome={handleBackToHome} />;
     }
-    if (topic === 'JS') {
-      return <JsQuiz handleBackToHome={handleBackToHome} />;
+    if (topic === 'Body') {
+      return <BodyQuiz handleBackToHome={handleBackToHome} />;
     }
     return null;
   };
