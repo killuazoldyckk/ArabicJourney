@@ -13,43 +13,43 @@ const FamilyQuiz = ({ handleBackToHome }) => {
         {
             image:brotherImage,
             answerOptions: [
-                { answerText: 'أخت', isCorrect: true },
                 { answerText: 'جدتي', isCorrect: false },
                 { answerText: 'امرأة', isCorrect: false },
+                { answerText: 'أخ', isCorrect: true },
                 { answerText: 'صديق', isCorrect: false },
             ],
         },
         {
             image:fatherImage,
             answerOptions: [
-                { answerText: 'أخت', isCorrect: true },
-                { answerText: 'جدتي', isCorrect: false },
+                { answerText: 'أب', isCorrect: true },
+                { answerText: 'جد', isCorrect: false },
                 { answerText: 'امرأة', isCorrect: false },
-                { answerText: 'صديق', isCorrect: false },
+                { answerText: 'أخ', isCorrect: false },
             ],
         },
         {
             image:grandFather,
             answerOptions: [
-                { answerText: 'أخت', isCorrect: true },
-                { answerText: 'جدتي', isCorrect: false },
-                { answerText: 'امرأة', isCorrect: false },
+                { answerText: 'جد', isCorrect: true },
                 { answerText: 'صديق', isCorrect: false },
+                { answerText: 'جدتي', isCorrect: false },
+                { answerText: 'أخت', isCorrect: false },
             ],
         },
         {
             image:grandMother,
             answerOptions: [
-                { answerText: 'أخت', isCorrect: true },
-                { answerText: 'جدتي', isCorrect: false },
+                { answerText: 'جد', isCorrect: false },
                 { answerText: 'امرأة', isCorrect: false },
                 { answerText: 'صديق', isCorrect: false },
+                { answerText: 'جدة', isCorrect: true },
             ],
         },
         {
             image:motherImage,
             answerOptions: [
-                { answerText: 'أخت', isCorrect: true },
+                { answerText: 'أم', isCorrect: true },
                 { answerText: 'جدتي', isCorrect: false },
                 { answerText: 'امرأة', isCorrect: false },
                 { answerText: 'صديق', isCorrect: false },
@@ -59,8 +59,8 @@ const FamilyQuiz = ({ handleBackToHome }) => {
             image:sisterImage,
             answerOptions: [
                 { answerText: 'أخت', isCorrect: true },
-                { answerText: 'جدتي', isCorrect: false },
                 { answerText: 'امرأة', isCorrect: false },
+                { answerText: 'أم', isCorrect: false },
                 { answerText: 'صديق', isCorrect: false },
             ],
         }
@@ -97,7 +97,7 @@ const FamilyQuiz = ({ handleBackToHome }) => {
                             <img src={score === 0 ? cross : checked} className="w-14 m-auto" alt="" />
                             <h3 className="text-2xl mt-4"> You scored <b>{score}</b> out of <b>{questions.length}</b></h3>
                             <div className="flex items-center justify-center py-1 mt-8">
-                            <button className='px-3 mx-2 text-blue-400 hover:text-blue-300' onClick={() => window.location.href = 'http://127.0.0.1:5500/category.html'}>
+                            <button className='px-3 mx-2 text-blue-400 hover:text-blue-300' onClick={() => window.location.href = 'http://127.0.0.1:5500/prototype/category.html'}>
                                 Back To Home
                             </button>
 

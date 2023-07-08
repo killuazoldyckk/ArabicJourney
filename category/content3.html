@@ -180,7 +180,7 @@
         Your browser does not support the audio element.
     </audio>
     <audio id="playSound">
-        <source id="audioSource" src="../audio/father_audio.mp3" type="audio/mp3">
+        <source id="audioSource" src="../audio/body_audio.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>  
     <div class="top-icon">
@@ -192,7 +192,7 @@
         <img src="../images/icon/next.png" alt="">
     </div>
     <div class="content">
-        <img id="familyImage" src="../images/body/Frame 24.png" alt="">
+        <img id="bodyImage" src="../images/body/Frame 24.png" alt="">
         <p id="playSoundBtn">
             <i class="fas fa-volume-up"></i>
             Play Sound
@@ -261,7 +261,7 @@
         document.getElementById('nextIcon').addEventListener('click', function() {
             clickCount++;
 
-            var imageElement = document.getElementById("familyImage");
+            var imageElement = document.getElementById("bodyImage");
             var arabicName = document.getElementById('arabicName');
             var arabicPron = document.getElementById('arabicPron');
             var audioSourceElement = document.getElementById('audioSource');
@@ -299,7 +299,7 @@
                 imageElement.src = "../images/body/uarm.png"; 
                 arabicName.innerHTML = "الذراع العلوية";
                 arabicPron.innerHTML = "Aldhirae Aleulwia";
-                audioElement.src = "../audio/uarm_audio.mp3";
+                audioElement.src = "../audio/uparm_audio.mp3";
             }else if (clickCount === 1) {
                 imageElement.src = "../images/body/head.png"; 
                 arabicName.innerHTML = "رأس";

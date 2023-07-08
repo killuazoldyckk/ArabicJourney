@@ -1,6 +1,5 @@
 body{
-    background-image: url('/prototype/images/quizBg.jpg');
-    background-position: center;
+    background-image: url('images/quizBg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }

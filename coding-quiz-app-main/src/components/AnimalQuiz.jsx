@@ -119,7 +119,7 @@ const AnimalQuiz = ({ handleBackToHome }) => {
                             <img src={score === 0 ? cross : checked} className="w-14 m-auto mt-4" alt="" />
                             <h3 className="text-2xl mt-4"> You scored <b>{score}</b> out of <b>{questions.length}</b></h3>
                             <div className="flex items-center justify-center py-1 mt-8">
-                                <button className='px-3 mx-2 text-blue-400 hover:text-blue-300' onClick={handleBackToHome}>
+                                <button className='px-3 mx-2 text-blue-400 hover:text-blue-300' onClick={() => window.location.href = 'http://127.0.0.1:5500/prototype/category.html'}>
                                     Back To Home
                                 </button>
                                 <button className='px-3 mx-2 text-blue-400 hover:text-blue-300' onClick={handlePlayAgain}>
