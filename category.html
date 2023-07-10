@@ -175,12 +175,12 @@
         </div>
         <div id="animalCategory" class="cat2" onmouseenter="showButton('.cat2')" onmouseleave="hideButton('.cat2')" >
             <button id="animalBtn" class="content" data-url="category/animalPage.html" disabled>
-                <a href="category/animalPage.html"><i id="startIcon" class="fa-solid fa-lock fa-fade" style="color: #ffc644;"></i></a>
+                <i id="startIcon" class="fa-solid fa-lock fa-fade" style="color: #ffc644;"></i>
             </button>
         </div>
         <div id="bodyCategory" class="cat3" onmouseenter="showButton('.cat3')" onmouseleave="hideButton('.cat3')">
             <button id="bodyBtn" class="content" data-url="category/bodyPage.html" disabled>
-                <a href="category/bodyPage.html"><i id="startIcon2" class="fa-solid fa-lock fa-fade" style="color: #ffc644;"></i></a>
+                <i id="startIcon2" class="fa-solid fa-lock fa-fade" style="color: #ffc644;"></i>
             </button>
         </div>
     </div>
@@ -232,6 +232,7 @@
             var familyCompleted = localStorage.getItem('family');
             var animalCompleted = localStorage.getItem('animal');
       
+            
             if (familyCompleted === 'completed') {
                 unlockAnimalCategory();
             }
@@ -256,7 +257,7 @@
                 var bodyBtn = document.getElementById('bodyBtn');
                 var normal2 = document.querySelector('.cat3');
                 normal2.style.filter = 'none';
-                bodyBtn.disable = false;
+                bodyBtn.disable = true;
 
                 var startIcon2 = document.getElementById('startIcon2')
                 startIcon2.classList.add('fa-solid', 'fa-play', 'fa-fade');
